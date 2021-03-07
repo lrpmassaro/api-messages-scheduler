@@ -1,2 +1,2 @@
 # api-messages-scheduler
-API de agendamento de mensagens SMS, e-mail, Push e WhatsApp.
+API Rest com Spring Boot para agendamento de mensagens SMS, E-mail, Push e WhatsApp.
