@@ -31,8 +31,8 @@ public class Swagger2 {
 				.description("API for scheduling SMS, e-mail, push and WhatsApp messages.")
 				.version("1.0")
 				.license("GNU General Public License v3.0")
-				.licenseUrl("")
-				.contact(new Contact("Lucas Massaro", "lucasmassaro@globomail.com", "https://github.com/lrpmassaro"))
+				.licenseUrl("https://github.com/lrpmassaro/api-messages-scheduler/blob/master/LICENSE")
+				.contact(new Contact("Lucas Massaro", "https://github.com/lrpmassaro", "lucasmassaro@globomail.com"))
 				.build();
 	}
 
