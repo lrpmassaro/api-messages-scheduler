@@ -55,14 +55,4 @@ public class Message {
 		this.status = MessageStatus.PENDING;
 		this.scheduleDate = LocalDateTime.now();
 	}
-
-	public Message setStatusSended() {
-		this.setStatus(MessageStatus.SENDED);
-		return this;
-	}
-	
-	public Message setStatusCancelled() {
-		this.setStatus(MessageStatus.CANCELLED);
-		return this;
-	}
 }

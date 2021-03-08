@@ -34,7 +34,7 @@ public class MessageService {
 	
 	public void cancellById(Long id) {
 		Message message = messageRepository.findById(id).get();
-		message.setStatusCancelled();
+		message.setStatus(MessageStatus.CANCELLED);
 	}
 	
 	public Message save(Message message) throws Exception {
