@@ -9,8 +9,7 @@ Para executar a aplicação, será necessário instalar os seguintes softwares:
 Configuração do ambiente:
 - Clonar o repositório: `https://github.com/lrpmassaro/api-messages-scheduler`
 - Entrar na pasta do projeto `cd api-messages-scheduler`
-- Executar os seguintes comandos via terminal
-- `docker-compose up`
+- Executar o comandos via terminal `docker-compose up`
 
 Documentação
 - [Swagger2](http://localhost:8080/message-scheduler/swagger-ui.html)
