@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.api.messagescheduler.dto.MessageDTO;
 import com.api.messagescheduler.models.Message;
 import com.api.messagescheduler.models.enums.MessageStatus;
 import com.api.messagescheduler.services.MessageService;
@@ -32,8 +33,8 @@ public class MessageController {
 	
 	@ApiOperation(value="Schedule new message")
 	@PostMapping("/message")
-	public ResponseEntity<Message> schedule(@RequestBody Message message) throws Exception {
-		return new ResponseEntity<Message>(messageService.save(message), HttpStatus.CREATED);
+	public ResponseEntity<MessageDTO> save(@RequestBody MessageDTO messageDTO) throws Exception {
+		return new ResponseEntity<MessageDTO>(messageService.save(messageDTO), HttpStatus.CREATED);
 	}
 
 	@ApiOperation(value="Messages list")

@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.api.messagescheduler.dto.MessageDTO;
+import com.api.messagescheduler.mapper.MessageMapper;
 import com.api.messagescheduler.models.Message;
 import com.api.messagescheduler.models.enums.MessageStatus;
 import com.api.messagescheduler.repositories.MessageRepository;
@@ -37,11 +39,12 @@ public class MessageService {
 		message.setStatus(MessageStatus.CANCELLED);
 	}
 	
-	public Message save(Message message) throws Exception {
-		if(LocalDateTime.now().isAfter(message.getSendDate())) {
+	public MessageDTO save(MessageDTO messageDTO) throws Exception {
+		if(LocalDateTime.now().isAfter(messageDTO.getSendDate())) {
 			throw new Exception("The scheduling date must be after than the current date.");
 		}
-		return messageRepository.save(message);
+		Message message = MessageMapper.toMessage(messageDTO);
+		return MessageMapper.toMessageDTO(messageRepository.save(message));
 	}
 
 }

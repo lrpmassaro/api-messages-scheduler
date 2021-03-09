@@ -35,7 +35,6 @@ public class Message {
 	private LocalDateTime scheduleDate;
 
 	@NotNull
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime sendDate;
 
 	@NotNull
