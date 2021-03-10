@@ -12,7 +12,6 @@ import javax.persistence.Table;
 
 import com.api.messagescheduler.models.enums.MessageStatus;
 import com.api.messagescheduler.models.enums.MessageType;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 
 import lombok.AllArgsConstructor;
@@ -31,7 +30,6 @@ public class Message {
 	private Long id;
 
 	@NotNull
-	@JsonFormat(pattern = "dd-MM-yyyy HH:mm:ss")
 	private LocalDateTime scheduleDate;
 
 	@NotNull

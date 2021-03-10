@@ -1,11 +1,14 @@
-package com.api.messagescheduler.mapper;
+package com.api.messagescheduler.factory;
 
 import com.api.messagescheduler.dto.MessageDTO;
 import com.api.messagescheduler.models.Message;
 import com.api.messagescheduler.models.enums.MessageStatus;
 import com.api.messagescheduler.models.enums.MessageType;
 
-public class MessageMapper {
+public final class MessageFactory {
+	
+	private MessageFactory() {
+	}
 
 	public static Message toMessage(MessageDTO messageDTO) {
 		return Message.builder()

@@ -1,0 +1,2 @@
+INSERT INTO tb_message (schedule_date, send_date, recipient, message, status, type)
+VALUES('2021-03-12 16:30:00', '2021-03-15 08:00:00', 'lucas@email.com', 'Parabéns! Você foi aprovado!', 'PENDING', 'EMAIL');

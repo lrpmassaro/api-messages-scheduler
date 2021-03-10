@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.api.messagescheduler.dto.MessageDTO;
-import com.api.messagescheduler.mapper.MessageMapper;
+import com.api.messagescheduler.factory.MessageFactory;
 import com.api.messagescheduler.models.Message;
 import com.api.messagescheduler.models.enums.MessageStatus;
 import com.api.messagescheduler.repositories.MessageRepository;
@@ -17,6 +17,14 @@ public class MessageService {
 	
 	@Autowired
 	private MessageRepository messageRepository;
+	
+	public MessageDTO save(MessageDTO messageDTO) throws Exception {
+		if(LocalDateTime.now().isAfter(messageDTO.getSendDate())) {
+			throw new Exception("The scheduling date must be after than the current date.");
+		}
+		Message message = MessageFactory.toMessage(messageDTO);
+		return MessageFactory.toMessageDTO(messageRepository.save(message));
+	}
 	
 	public List<Message> findAll(){
 		return messageRepository.findAll();
@@ -32,19 +40,23 @@ public class MessageService {
 	
 	public void deleteById(Long id) {
 		messageRepository.deleteById(id);
-	}
+	}		
 	
-	public void cancellById(Long id) {
-		Message message = messageRepository.findById(id).get();
-		message.setStatus(MessageStatus.CANCELLED);
-	}
-	
-	public MessageDTO save(MessageDTO messageDTO) throws Exception {
-		if(LocalDateTime.now().isAfter(messageDTO.getSendDate())) {
-			throw new Exception("The scheduling date must be after than the current date.");
-		}
-		Message message = MessageMapper.toMessage(messageDTO);
-		return MessageMapper.toMessageDTO(messageRepository.save(message));
-	}
+//	public void cancell(Long id) {
+//		Message message = messageRepository.findById(id).get();
+//		message.setStatus(MessageStatus.CANCELLED);
+//	}
+//	
+//	public MessageDTO cancellMessage(Long id) throws Exception {
+//		Message message = messageRepository.findById(id).orElseThrow(() -> new Exception("Schedule id" + id + "not found."));
+//		message.setStatus(MessageStatus.CANCELLED);
+//		return MessageFactory.toMessageDTO(messageRepository.save(message));
+//	}
+//	
+//	public MessageDTO cancellById(Long id) throws Exception {
+//		Message message = messageRepository.findById(id).orElseThrow(() -> new Exception("Schedule id" + id + "not found."));
+//		message.setStatus(MessageStatus.CANCELLED);
+//		return MessageFactory.toMessageDTO(message);
+//	}
 
 }
